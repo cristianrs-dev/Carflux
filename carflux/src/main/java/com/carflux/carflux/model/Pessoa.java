@@ -6,12 +6,14 @@ public class Pessoa {
 	private Integer codigoCliente;
 	private String nome;
 	private String documento;
-	private String contato;
+	private Contato contato;
 	private String perfil;
-	private String endereco;
+	private Endereco endereco;
 	
-	public Pessoa(Integer codigoCliente, String nome, String documento, String contato, String perfil,
-			String endereco) {
+	
+
+	public Pessoa(Integer codigoCliente, String nome, String documento, Contato contato, String perfil,
+			Endereco endereco) {
 		super();
 		this.codigoCliente = codigoCliente;
 		this.nome = nome;
@@ -49,11 +51,11 @@ public class Pessoa {
 		this.documento = documento;
 	}
 
-	public String getContato() {
+	public Contato getContato() {
 		return contato;
 	}
 
-	public void setContato(String contato) {
+	public void setContato(Contato contato) {
 		this.contato = contato;
 	}
 
@@ -65,12 +67,14 @@ public class Pessoa {
 		this.perfil = perfil;
 	}
 
-	public String getEndereco() {
+	public Endereco getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(String endereco) {
+	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+
+	
 	
 }
