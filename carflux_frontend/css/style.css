@@ -1,0 +1,100 @@
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+  }
+
+  .sidebar {
+    width: 220px;
+    background-color: #343a40;
+    color: white;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .sidebar h2 {
+    color: #fff;
+    margin-bottom: 30px;
+  }
+
+  .sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 4px;
+  }
+
+  .sidebar a:hover {
+    background-color: #495057;
+  }
+
+  .main-content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: #f8f9fa;
+  }
+
+  form {
+    max-width: 500px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  label {
+    display: block;
+    margin-top: 15px;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  /* Botão principal (verde, como no último estilo) */
+  button {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  button:hover {
+    background-color: #218838;
+  }
+
+  /* Estilo de tabela */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  th, td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+
+  th {
+    background-color: #e9ecef;
+  }
+
+  .fa-solid, .fa-pen,.fa-trash-can{
+    cursor: pointer;
+  }
