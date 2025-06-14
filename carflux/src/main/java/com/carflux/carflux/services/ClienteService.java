@@ -27,5 +27,11 @@ public class ClienteService {
 		
 	}
 	
+public void atualizarRegistroDeCliente(Cliente cliente) {
+		
+		repository.save(cliente);
+		
+	}
+	
 	
 }
