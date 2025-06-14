@@ -1,5 +1,8 @@
 package com.carflux.carflux;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -37,8 +40,11 @@ public class VeiculoServiceTest {
 			    95000.0      
 				);
 		service.cadastrarVeiculo(veiculo);
+		assertNotNull(veiculo.getCodigoVeiculo(),"codigo do veiculo");
+		assertEquals("Toyota", veiculo.getMarca(),"a marca deve ser Toyota");
 	}
 	
+	@Test
 	void buscarCor() {
 		List<Veiculo> lista;
 		lista = service.listarVeiculoPelaCor("vermelho");
@@ -51,7 +57,7 @@ public class VeiculoServiceTest {
 	}
 	
 	
-	
+	@Test
 	void buscarMarca() {
 		List<Veiculo> lista;
 		lista = service.listarVeiculoPelaMarca("ford");
@@ -63,6 +69,7 @@ public class VeiculoServiceTest {
 		}
 	}
 	
+	@Test
 	  void atualizarRegistroDoVeiculo() {
 		Veiculo veiculo = new Veiculo(
 				1,              // código, null porque será gerado pelo banco
@@ -78,13 +85,13 @@ public class VeiculoServiceTest {
 		service.atualizarDadosDoVeiculo(veiculo);
 	}
 	
-	
+	@Test
 	 void buscarVeiculoPeloId() {
 		veiculo = service.buscarVeiculoPeloCodigo(1);
 		System.out.println(veiculo.getMarca());
 	}
 	
-	
+	@Test
 	void listarVeiculos() {
 		List<Veiculo> lista = service.listarVeiculos();
 		for (Veiculo veiculo : lista) {
