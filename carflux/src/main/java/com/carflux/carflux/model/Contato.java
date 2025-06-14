@@ -66,6 +66,11 @@ public class Contato {
 		this.cliente = cliente;
 	}
 
+	@Override
+	public String toString() {
+		return "Contato [idContato=" + idContato + ", tipo=" + tipo + ", valor=" + valor + ", cliente=" + cliente.getNome() + "]";
+	}
+
 	
 	
 	
