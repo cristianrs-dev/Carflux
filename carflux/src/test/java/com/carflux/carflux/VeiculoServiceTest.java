@@ -5,18 +5,40 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import com.carflux.carflux.model.Veiculo;
 import com.carflux.carflux.services.VeiculoService;
 
+import jakarta.transaction.Transactional;
+
 @SpringBootTest
+@ActiveProfiles("test")
+@Transactional
 public class VeiculoServiceTest {
 	Veiculo veiculo = new Veiculo();
+	
 	
 	@Autowired
 	private VeiculoService service;
 	
 	@Test
+	
+	void cadastrarVeiculo() {
+		Veiculo veiculo = new Veiculo(
+				null,              // código, null porque será gerado pelo banco
+			    "Toyota",          // marca
+			    "Corolla",         // modelo
+			    2022,              // ano
+			    "Prata",           // cor
+			    15000.0,           // km rodados
+			    "Gasolina",        // combustível
+			    "Automático",      // câmbio
+			    95000.0      
+				);
+		service.cadastrarVeiculo(veiculo);
+	}
+	
 	void buscarCor() {
 		List<Veiculo> lista;
 		lista = service.listarVeiculoPelaCor("vermelho");
@@ -30,9 +52,7 @@ public class VeiculoServiceTest {
 	
 	
 	
-	/*
-	 * 
-	 * void buscarMarca() {
+	void buscarMarca() {
 		List<Veiculo> lista;
 		lista = service.listarVeiculoPelaMarca("ford");
 		
@@ -66,26 +86,13 @@ public class VeiculoServiceTest {
 	
 	
 	void listarVeiculos() {
-		lista = service.listarVeiculos();
+		List<Veiculo> lista = service.listarVeiculos();
 		for (Veiculo veiculo : lista) {
 			System.out.println(veiculo.getMarca());
 		}
 	}
 	
 	
-	void cadastrarVeiculo() {
-		Veiculo veiculo = new Veiculo(
-				null,              // código, null porque será gerado pelo banco
-			    "Toyota",          // marca
-			    "Corolla",         // modelo
-			    2022,              // ano
-			    "Prata",           // cor
-			    15000.0,           // km rodados
-			    "Gasolina",        // combustível
-			    "Automático",      // câmbio
-			    95000.0      
-				);
-		service.cadastrarVeiculo(veiculo);
-	}*/
+	
 	
 }

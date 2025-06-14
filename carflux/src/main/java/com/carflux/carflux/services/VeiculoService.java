@@ -14,8 +14,8 @@ public class VeiculoService {
 	@Autowired
 	private VeiculoRepository repository;
 	
-	public void cadastrarVeiculo(Veiculo veiculo) {
-		repository.save(veiculo);
+	public Veiculo cadastrarVeiculo(Veiculo veiculo) {
+		return repository.save(veiculo);
 	}
 	
 	public Veiculo  buscarVeiculoPeloCodigo(Integer codigoVeiculo) {
