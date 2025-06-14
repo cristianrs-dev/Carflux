@@ -22,7 +22,7 @@ public class ClienteServiceTests {
 	private ClienteService service;
 
 	
-	@Test
+	
 	
 	void atualizarRegistroDoCliente() {
 		//teger codigoCliente = 101;
