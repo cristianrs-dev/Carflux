@@ -2,6 +2,7 @@ package com.carflux.carflux.services;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,15 +22,29 @@ public class ClienteService {
 		
 	}
 	
+	public Cliente buscarClientePeloCodigo(Integer id) {
+		
+		 return repository.findById(id).orElse(null);
+		 
+	}
+	
 	public List<Cliente> listarClientes(){
 		
 		return  repository.findAll();
 		
 	}
 	
-public void atualizarRegistroDeCliente(Cliente cliente) {
+	//adicionar o id do endereço e o id contato para não duplicar
+	public void atualizarRegistroDeCliente(Cliente cliente,Integer id) {
+		Cliente clienteExistente = buscarClientePeloCodigo(id);
+		if(clienteExistente == null) {
+			System.out.println("CLIENTE INEXISTENTE");
+			return;
+		}
 		
-		repository.save(cliente);
+			clienteExistente.setCodigoCliente(id);
+			repository.save(cliente);
+		
 		
 	}
 	
