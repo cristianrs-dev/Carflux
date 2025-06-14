@@ -1,13 +1,32 @@
 package com.carflux.carflux.model;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Pessoa {
-	
+	 @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigoCliente;
+	
 	private String nome;
 	private String documento;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_contato")
 	private Contato contato;
 	private String perfil;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_endereco")
 	private Endereco endereco;
 	
 	
@@ -73,6 +92,12 @@ public class Pessoa {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	@Override
+	public String toString() {
+		return "Pessoa [codigoCliente=" + codigoCliente + ", nome=" + nome + ", documento=" + documento + ", contato="
+				+ contato + ", perfil=" + perfil + ", endereco=" + endereco + "]";
 	}
 
 	
