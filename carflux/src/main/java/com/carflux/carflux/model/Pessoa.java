@@ -96,8 +96,8 @@ public class Pessoa {
 
 	@Override
 	public String toString() {
-		return "Pessoa [codigoCliente=" + codigoCliente + ", nome=" + nome + ", documento=" + documento + ", contato="
-				+ contato + ", perfil=" + perfil + ", endereco=" + endereco + "]";
+		return "Pessoa [codigoCliente=" + codigoCliente + "\n, nome=" + nome + "\n, documento=" + documento + "\n, contato="
+				+ contato + "\n, perfil=" + perfil + "\n, endereco=" + endereco + "]";
 	}
 
 	

@@ -1,5 +1,7 @@
 package com.carflux.carflux;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,6 +21,16 @@ public class ClienteServiceTests {
 
 	
 	@Test
+	
+	void listarClientes() {
+		List<Cliente> cliente = service.listarClientes();
+		
+		for (Cliente cliente2 : cliente) {
+			System.out.println(cliente2.toString());
+		}
+	}
+	
+	/*
 	void cadastrarCliente() {
 		//teger codigoCliente = 101;
 
@@ -48,6 +60,6 @@ public class ClienteServiceTests {
 		endereco.setCliente(cliente1);
 		service.cadastrarCliente(cliente1);
 
-		
-	}
+		*/
+	
 }
