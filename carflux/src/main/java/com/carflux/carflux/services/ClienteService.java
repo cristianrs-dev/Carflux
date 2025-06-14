@@ -1,6 +1,8 @@
 package com.carflux.carflux.services;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,12 @@ public class ClienteService {
 	public void cadastrarCliente(Cliente cliente) {
 		
 		repository.save(cliente);
+		
+	}
+	
+	public List<Cliente> listarClientes(){
+		
+		return  repository.findAll();
 		
 	}
 	

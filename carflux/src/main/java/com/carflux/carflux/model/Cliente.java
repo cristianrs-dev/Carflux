@@ -9,6 +9,10 @@ public class Cliente extends Pessoa {
 	
 	
 
+	public Cliente() {
+		super();
+	}
+
 	public Cliente(Integer codigoCliente, String nome, String documento, Contato contato, String perfil,
 			Endereco endereco) {
 		super(codigoCliente, nome, documento, contato, perfil, endereco);
