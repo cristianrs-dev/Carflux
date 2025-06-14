@@ -22,11 +22,11 @@ public class Endereco {
     private String estado;
     
     @ManyToOne
-    @JoinColumn(name="codigoCliente")
-    private Pessoa pessoa;
+    @JoinColumn(name="codigo_cliente")
+    private Cliente cliente;
 
 	public Endereco(Integer idEndereco, String rua, String numero, String bairro, String cidade, String estado,
-			Pessoa pessoa) {
+			Cliente cliente) {
 		super();
 		this.idEndereco = idEndereco;
 		this.rua = rua;
@@ -34,7 +34,7 @@ public class Endereco {
 		this.bairro = bairro;
 		this.cidade = cidade;
 		this.estado = estado;
-		this.pessoa = pessoa;
+		this.cliente = cliente;
 	}
 
 	public Endereco() {
@@ -89,13 +89,11 @@ public class Endereco {
 		this.estado = estado;
 	}
 
-	public Pessoa getPessoa() {
-		return pessoa;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
-    
-    
 }

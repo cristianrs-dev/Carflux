@@ -19,15 +19,15 @@ public class Contato {
 	private String valor;
 	
 	@ManyToOne
-	@JoinColumn(name="codigoCliente")
-	private Pessoa pessoa;
+	@JoinColumn(name="codigo_cliente")
+	private Cliente cliente;
 
-	public Contato(Integer idContato, String tipo, String valor, Pessoa pessoa) {
+	public Contato(Integer idContato, String tipo, String valor, Cliente cliente) {
 		super();
 		this.idContato = idContato;
 		this.tipo = tipo;
 		this.valor = valor;
-		this.pessoa = pessoa;
+		this.cliente = cliente;
 	}
 
 	public Contato() {
@@ -58,13 +58,14 @@ public class Contato {
 		this.valor = valor;
 	}
 
-	public Pessoa getPessoa() {
-		return pessoa;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
+
 	
 	
 	
