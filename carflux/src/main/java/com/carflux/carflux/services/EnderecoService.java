@@ -20,4 +20,9 @@ public class EnderecoService {
 		
 	}
 	
+	public Endereco buscarEnderecoPeloId(Integer id) {
+		Endereco endereco = repository.findById(id).orElse(null);
+			return endereco;
+	}
+
 }
