@@ -10,7 +10,7 @@ import com.carflux.carflux.repository.EnderecoRepository;
 
 @Service
 public class EnderecoService {
-	
+
 	@Autowired
 	EnderecoRepository repository;
 	
@@ -24,4 +24,5 @@ public class EnderecoService {
 		Endereco endereco = repository.findById(id).orElse(null);
 			return endereco;
 	}
+
 }
