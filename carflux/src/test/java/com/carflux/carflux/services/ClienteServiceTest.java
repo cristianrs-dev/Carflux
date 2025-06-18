@@ -23,7 +23,7 @@ class ClienteServiceTest {
 	void atualizarRegistroDoCliente() {
 		//teger codigoCliente = 101;
 
-		String nome = "Lucas Martins";
+		String nome = "Lucas Martins Silva";
 
 		String documento = "123.456.789-00"; // CPF fictício
 
@@ -41,8 +41,6 @@ class ClienteServiceTest {
 
 		String perfil = "FREE";
 
-		FormaPagamento formaPagamento = new FormaPagamento();
-		formaPagamento.setDescricao("Cartão de Crédito");
 		
 		Cliente cliente1 = new Cliente(1, nome, documento, contato, perfil, endereco);
 		contato.setCliente(cliente1);

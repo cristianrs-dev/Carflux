@@ -47,9 +47,12 @@ public class ClienteService {
 		
 	}
 	
-	//adicionar o id do endereço e o id contato para não duplicar
+	
 	public void atualizarRegistroDeCliente(Cliente cliente,Integer id) {
+		
+		
 		Cliente clienteExistente = buscarClientePeloCodigo(id);
+		
 	    if (clienteExistente == null) {
 	        System.out.println("CLIENTE INEXISTENTE");
 	        return;
@@ -63,32 +66,46 @@ public class ClienteService {
 	        return;
 	    }
 
-	    Endereco endereco = enderecoOpt.get();
+	    Endereco enderecoExistente = enderecoOpt.get();
+	    Endereco novoEndereco = cliente.getEndereco();
+	    
+	    
+	    Contato novoContato = cliente.getContato();
 	    Contato contato = contatoOpt.get();
 
-	    // Verifica se o endereço e contato estão realmente associados ao cliente
-	    boolean dadosConferem = clienteExistente.getEndereco().getIdEndereco().equals(endereco.getIdEndereco())
+	   
+	    boolean dadosConferem = clienteExistente.getEndereco().getIdEndereco().equals(enderecoExistente.getIdEndereco())
 	                          && clienteExistente.getContato().getIdContato().equals(contato.getIdContato());
 
 	    if (dadosConferem) {
-	    	// Aqui você garante que o novo objeto cliente tenha os mesmos ids nos relacionamentos
+	    
 	        cliente.getEndereco().setIdEndereco(enderecoOpt.get().getIdEndereco());
 	        cliente.getContato().setIdContato(contatoOpt.get().getIdContato());
 	        
+	        novoEndereco.setRua(cliente.getEndereco().getRua());
+			novoEndereco.setNumero(cliente.getEndereco().getNumero());
+			novoEndereco.setBairro(cliente.getEndereco().getBairro());
+			novoEndereco.setCidade(cliente.getEndereco().getCidade());
+			novoEndereco.setEstado(cliente.getEndereco().getEstado());
+			
+			novoContato.setTipo(cliente.getContato().getTipo());
+			novoContato.setValor(cliente.getContato().getValor());
+	        
 	        
 	        clienteExistente.setCodigoCliente(id);
-	        clienteExistente.setContato(contato);
-	        clienteExistente.setEndereco(endereco);
+	        clienteExistente.setContato(novoContato);
+	        clienteExistente.setEndereco(novoEndereco);
 	        clienteExistente.setDocumento(cliente.getDocumento());
 	        clienteExistente.setNome(cliente.getNome());
 	        clienteExistente.setPerfil(cliente.getPerfil());
 	        
 	        
+	    
 	        
 		    repository.save(clienteExistente);
-	    }
+	    
 
-	   
+	    }
 		
 	}
 	
