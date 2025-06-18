@@ -23,7 +23,7 @@ class ClienteServiceTest {
 	void atualizarRegistroDoCliente() {
 		//teger codigoCliente = 101;
 
-		String nome = "Lucas Martins braga";
+		String nome = "Lucas Martins";
 
 		String documento = "123.456.789-00"; // CPF fictício
 
@@ -34,7 +34,7 @@ class ClienteServiceTest {
 
 		Endereco endereco = new Endereco();
 		endereco.setRua("Av. Constantino Nery");
-		endereco.setNumero("1250");
+		endereco.setNumero("1200");
 		endereco.setBairro("Centro");
 		endereco.setCidade("Manaus");
 		endereco.setEstado("AM");

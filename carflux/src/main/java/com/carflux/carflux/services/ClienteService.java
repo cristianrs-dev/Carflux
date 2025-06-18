@@ -71,14 +71,20 @@ public class ClienteService {
 	                          && clienteExistente.getContato().getIdContato().equals(contato.getIdContato());
 
 	    if (dadosConferem) {
-	    	clienteExistente.setCodigoCliente(id);
-	    	endereco.setIdEndereco(enderecoOpt.get().getIdEndereco());
-	    	contato.setIdContato(contatoOpt.get().getIdContato());
-	    	clienteExistente.setNome(cliente.getNome());
-		    clienteExistente.setDocumento(cliente.getDocumento());
-		    clienteExistente.setEndereco(cliente.getEndereco());
-		    clienteExistente.setContato(cliente.getContato());
-
+	    	// Aqui você garante que o novo objeto cliente tenha os mesmos ids nos relacionamentos
+	        cliente.getEndereco().setIdEndereco(enderecoOpt.get().getIdEndereco());
+	        cliente.getContato().setIdContato(contatoOpt.get().getIdContato());
+	        
+	        
+	        clienteExistente.setCodigoCliente(id);
+	        clienteExistente.setContato(contato);
+	        clienteExistente.setEndereco(endereco);
+	        clienteExistente.setDocumento(cliente.getDocumento());
+	        clienteExistente.setNome(cliente.getNome());
+	        clienteExistente.setPerfil(cliente.getPerfil());
+	        
+	        
+	        
 		    repository.save(clienteExistente);
 	    }
 
