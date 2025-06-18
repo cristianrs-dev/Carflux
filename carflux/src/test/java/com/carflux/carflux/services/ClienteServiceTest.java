@@ -1,33 +1,29 @@
-package com.carflux.carflux;
+package com.carflux.carflux.services;
 
-import java.util.List;
+
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 
 import com.carflux.carflux.model.Cliente;
 import com.carflux.carflux.model.Contato;
 import com.carflux.carflux.model.Endereco;
 import com.carflux.carflux.model.FormaPagamento;
-import com.carflux.carflux.services.ClienteService;
-
 
 @SpringBootTest
-@ActiveProfiles("test")
-public class ClienteServiceTests {
-	
+class ClienteServiceTest {
+
 	@Autowired
 	private ClienteService service;
-
 	
 	
 	
+	@Test
 	void atualizarRegistroDoCliente() {
 		//teger codigoCliente = 101;
 
-		String nome = "Lucas Martins";
+		String nome = "Lucas Martins Silva";
 
 		String documento = "123.456.789-00"; // CPF fictício
 
@@ -38,22 +34,20 @@ public class ClienteServiceTests {
 
 		Endereco endereco = new Endereco();
 		endereco.setRua("Av. Constantino Nery");
-		endereco.setNumero("1250");
+		endereco.setNumero("1200");
 		endereco.setBairro("Centro");
 		endereco.setCidade("Manaus");
 		endereco.setEstado("AM");
 
 		String perfil = "FREE";
 
-		FormaPagamento formaPagamento = new FormaPagamento();
-		formaPagamento.setDescricao("Cartão de Crédito");
 		
 		Cliente cliente1 = new Cliente(1, nome, documento, contato, perfil, endereco);
 		contato.setCliente(cliente1);
 		endereco.setCliente(cliente1);
 		service.atualizarRegistroDeCliente(cliente1,1);
 	}
-	
+	/*
  void listarClientes() {
 		List<Cliente> cliente = service.listarClientes();
 		
@@ -93,5 +87,5 @@ public class ClienteServiceTests {
 
 		
 	
-}
+}*/
 }
