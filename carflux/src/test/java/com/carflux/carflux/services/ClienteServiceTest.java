@@ -1,33 +1,29 @@
-package com.carflux.carflux;
+package com.carflux.carflux.services;
 
-import java.util.List;
+
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 
 import com.carflux.carflux.model.Cliente;
 import com.carflux.carflux.model.Contato;
 import com.carflux.carflux.model.Endereco;
 import com.carflux.carflux.model.FormaPagamento;
-import com.carflux.carflux.services.ClienteService;
-
 
 @SpringBootTest
-@ActiveProfiles("test")
-public class ClienteServiceTests {
-	
+class ClienteServiceTest {
+
 	@Autowired
 	private ClienteService service;
-
 	
 	
 	
+	@Test
 	void atualizarRegistroDoCliente() {
 		//teger codigoCliente = 101;
 
-		String nome = "Lucas Martins";
+		String nome = "Lucas Martins braga";
 
 		String documento = "123.456.789-00"; // CPF fictício
 
@@ -53,7 +49,7 @@ public class ClienteServiceTests {
 		endereco.setCliente(cliente1);
 		service.atualizarRegistroDeCliente(cliente1,1);
 	}
-	
+	/*
  void listarClientes() {
 		List<Cliente> cliente = service.listarClientes();
 		
@@ -93,5 +89,5 @@ public class ClienteServiceTests {
 
 		
 	
-}
+}*/
 }

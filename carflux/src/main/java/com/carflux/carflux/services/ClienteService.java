@@ -19,8 +19,15 @@ public class ClienteService {
 
 	@Autowired
 	private ClienteRepository repository;
+	
+	@Autowired
 	private EnderecoRepository enderecoRepository;
+	
+	@Autowired
 	private ContatoRepository contatoRepository;
+	
+	private EnderecoService enderecoService;
+	private ContatoService contatoService;
 	
 	public void cadastrarCliente(Cliente cliente) {
 		
@@ -63,19 +70,19 @@ public class ClienteService {
 	    boolean dadosConferem = clienteExistente.getEndereco().getIdEndereco().equals(endereco.getIdEndereco())
 	                          && clienteExistente.getContato().getIdContato().equals(contato.getIdContato());
 
-	    if (!dadosConferem) {
-	        System.out.println("RELACIONAMENTOS INVÁLIDOS");
-	        return;
+	    if (dadosConferem) {
+	    	clienteExistente.setCodigoCliente(id);
+	    	endereco.setIdEndereco(enderecoOpt.get().getIdEndereco());
+	    	contato.setIdContato(contatoOpt.get().getIdContato());
+	    	clienteExistente.setNome(cliente.getNome());
+		    clienteExistente.setDocumento(cliente.getDocumento());
+		    clienteExistente.setEndereco(cliente.getEndereco());
+		    clienteExistente.setContato(cliente.getContato());
+
+		    repository.save(clienteExistente);
 	    }
 
-	    // Atualiza os dados necessários do cliente existente
-	    clienteExistente.setNome(cliente.getNome());
-	    clienteExistente.setDocumento(cliente.getDocumento());
-	    clienteExistente.setEndereco(cliente.getEndereco());
-	    clienteExistente.setContato(cliente.getContato());
-
-	    repository.save(clienteExistente);
-		
+	   
 		
 	}
 	
