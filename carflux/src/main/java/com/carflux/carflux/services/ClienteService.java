@@ -29,6 +29,9 @@ public class ClienteService {
 	@Autowired
 	private EnderecoService enderecoService;
 	
+	@Autowired
+	private ContatoService contatoService;
+	
 
 	public void cadastrarCliente(Cliente cliente) {
 		
@@ -51,64 +54,16 @@ public class ClienteService {
 	
 	public void atualizarRegistroDeCliente(Cliente cliente,Integer id) {
 		
-		/*
-		Cliente clienteExistente = buscarClientePeloCodigo(id);
-		
-	    if (clienteExistente == null) {
-	        System.out.println("CLIENTE INEXISTENTE");
-	        return;
-	    }
-
-	    Optional<Endereco> enderecoOpt = enderecoRepository.findById(clienteExistente.getEndereco().getIdEndereco());
-	    Optional<Contato> contatoOpt = contatoRepository.findById(clienteExistente.getContato().getIdContato());
-
-	    if (enderecoOpt.isEmpty() || contatoOpt.isEmpty()) {
-	        System.out.println("ENDEREÇO OU CONTATO INEXISTENTE");
-	        return;
-	    }
-
-	    Endereco enderecoExistente = enderecoOpt.get();
-	    Endereco novoEndereco = cliente.getEndereco();
-	    
-	    
-	    Contato novoContato = cliente.getContato();
-	    Contato contato = contatoOpt.get();
-
-	   
-	    boolean dadosConferem = clienteExistente.getEndereco().getIdEndereco().equals(enderecoExistente.getIdEndereco())
-	                          && clienteExistente.getContato().getIdContato().equals(contato.getIdContato());
-
-	    if (dadosConferem) {
-	    
-	        cliente.getEndereco().setIdEndereco(enderecoOpt.get().getIdEndereco());
-	        cliente.getContato().setIdContato(contatoOpt.get().getIdContato());
-	        
-	        novoEndereco.setRua(cliente.getEndereco().getRua());
-			novoEndereco.setNumero(cliente.getEndereco().getNumero());
-			novoEndereco.setBairro(cliente.getEndereco().getBairro());
-			novoEndereco.setCidade(cliente.getEndereco().getCidade());
-			novoEndereco.setEstado(cliente.getEndereco().getEstado());
-			
-			novoContato.setTipo(cliente.getContato().getTipo());
-			novoContato.setValor(cliente.getContato().getValor());
-	        
-	        
-	        clienteExistente.setCodigoCliente(id);
-	        clienteExistente.setContato(novoContato);
-	        clienteExistente.setEndereco(novoEndereco);
-	        clienteExistente.setDocumento(cliente.getDocumento());
-	        clienteExistente.setNome(cliente.getNome());
-	        clienteExistente.setPerfil(cliente.getPerfil());
-	        
-	        */
 		
 			Cliente clienteExistente = buscarClientePeloCodigo(id);
 			Endereco enderecoExistente = enderecoService.buscarEnderecoPeloIdCliente(id);
+			Contato contatoExistente = contatoService.buscarContatoClientePeloIdCliente(id);
+			
 			Contato novoContato = clienteExistente.getContato();
 			Endereco novoEndereco = enderecoExistente;
 			
 			 cliente.getEndereco().setIdEndereco(enderecoExistente.getIdEndereco());
-		      cliente.getContato().setIdContato(clienteExistente.getContato().getIdContato());
+		     cliente.getContato().setIdContato(contatoExistente.getIdContato());
 		        
 		        novoEndereco.setRua(cliente.getEndereco().getRua());
 				novoEndereco.setNumero(cliente.getEndereco().getNumero());
@@ -133,7 +88,7 @@ public class ClienteService {
 		    repository.save(clienteExistente);
 	    
 
-	  //  }
+	  
 		
 	}
 	

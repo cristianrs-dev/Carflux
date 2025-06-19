@@ -23,7 +23,7 @@ class ClienteServiceTest {
 	void atualizarRegistroDoCliente() {
 		//teger codigoCliente = 101;
 
-		String nome = "Lucas Martins braga Neto";
+		String nome = "Lucas Martins";
 
 		String documento = "123.456.789-00"; // CPF fictício
 

@@ -8,6 +8,6 @@ import com.carflux.carflux.model.Contato;
 
 public interface ContatoRepository extends JpaRepository<Contato, Integer> {
 	
-	public Optional<Contato> findyByClienteCodigoCliente(Integer idCliente);
+	public Optional<Contato> findByClienteCodigoCliente(Integer idCliente);
 	
 }
