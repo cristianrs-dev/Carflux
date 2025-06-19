@@ -26,9 +26,10 @@ public class ClienteService {
 	@Autowired
 	private ContatoRepository contatoRepository;
 	
+	@Autowired
 	private EnderecoService enderecoService;
-	private ContatoService contatoService;
 	
+
 	public void cadastrarCliente(Cliente cliente) {
 		
 		repository.save(cliente);
@@ -50,7 +51,7 @@ public class ClienteService {
 	
 	public void atualizarRegistroDeCliente(Cliente cliente,Integer id) {
 		
-		
+		/*
 		Cliente clienteExistente = buscarClientePeloCodigo(id);
 		
 	    if (clienteExistente == null) {
@@ -99,13 +100,40 @@ public class ClienteService {
 	        clienteExistente.setNome(cliente.getNome());
 	        clienteExistente.setPerfil(cliente.getPerfil());
 	        
-	        
+	        */
+		
+			Cliente clienteExistente = buscarClientePeloCodigo(id);
+			Endereco enderecoExistente = enderecoService.buscarEnderecoPeloIdCliente(id);
+			Contato novoContato = clienteExistente.getContato();
+			Endereco novoEndereco = enderecoExistente;
+			
+			 cliente.getEndereco().setIdEndereco(enderecoExistente.getIdEndereco());
+		      cliente.getContato().setIdContato(clienteExistente.getContato().getIdContato());
+		        
+		        novoEndereco.setRua(cliente.getEndereco().getRua());
+				novoEndereco.setNumero(cliente.getEndereco().getNumero());
+				novoEndereco.setBairro(cliente.getEndereco().getBairro());
+				novoEndereco.setCidade(cliente.getEndereco().getCidade());
+				novoEndereco.setEstado(cliente.getEndereco().getEstado());
+				
+				novoContato.setIdContato(cliente.getContato().getIdContato());
+				novoContato.setTipo(cliente.getContato().getTipo());
+				novoContato.setValor(cliente.getContato().getValor());
+		        
+		        
+		        clienteExistente.setCodigoCliente(id);
+		        clienteExistente.setContato(novoContato);
+		        clienteExistente.setEndereco(novoEndereco);
+		        clienteExistente.setDocumento(cliente.getDocumento());
+		        clienteExistente.setNome(cliente.getNome());
+		        clienteExistente.setPerfil(cliente.getPerfil());
+			
 	    
 	        
 		    repository.save(clienteExistente);
 	    
 
-	    }
+	  //  }
 		
 	}
 	

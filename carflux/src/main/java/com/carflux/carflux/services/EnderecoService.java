@@ -1,6 +1,7 @@
 package com.carflux.carflux.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,16 @@ public class EnderecoService {
 	}
 	
 	public Endereco buscarEnderecoPeloId(Integer id) {
-		Endereco endereco = repository.findById(id).orElse(null);
-			return endereco;
+		return repository.findById(id).orElse(null);
+			
+	}
+	
+	public Endereco buscarEnderecoPeloIdCliente(Integer idCliente) {
+		
+		Optional<Endereco> enderecoCliente = repository.findByClienteCodigoCliente(idCliente);
+		
+		return enderecoCliente.get();
+		
 	}
 
 }
