@@ -96,4 +96,12 @@ public class Endereco {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+
+	@Override
+	public String toString() {
+		return "Endereco [idEndereco=" + idEndereco + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro
+				+ ", cidade=" + cidade + ", estado=" + estado + ", cliente=" + cliente.getNome() + "]";
+	}
+	
+	
 }
