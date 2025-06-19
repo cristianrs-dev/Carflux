@@ -22,15 +22,15 @@ public class EnderecoService {
 	}
 	
 	public Endereco buscarEnderecoPeloId(Integer id) {
+		
 		return repository.findById(id).orElse(null);
 			
 	}
 	
 	public Endereco buscarEnderecoPeloIdCliente(Integer idCliente) {
 		
-		Optional<Endereco> enderecoCliente = repository.findByClienteCodigoCliente(idCliente);
-		
-		return enderecoCliente.get();
+	
+		return repository.findByClienteCodigoCliente(idCliente).orElse(null);
 		
 	}
 

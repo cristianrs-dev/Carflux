@@ -25,4 +25,10 @@ public class ContatoService {
 		return repository.findById(id).orElse(null);
 		
 	}
+	
+	public Contato buscarContatoClientePeloIdCliente(Integer id) {
+		
+		return repository.findByClienteCodigoCliente(id).orElse(null);
+		
+	}
 }
