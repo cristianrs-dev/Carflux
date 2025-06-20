@@ -1,4 +1,4 @@
-package com.carflux.carflux.controller;
+package com.carflux.carflux.restController;
 
 import java.util.List;
 

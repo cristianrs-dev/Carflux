@@ -41,10 +41,11 @@
   }
 
   document.addEventListener("click", function(event) {
+    const modal = document.getElementById("modal")
     if (event.target.classList.contains("editar")) {
       const id = event.target.dataset.id;
-      //alert("Editar: " + id);
-      window.location.replace("atualizarVeiculo.html");
+      modal.style.display="block"
+      
     }
   
     if (event.target.classList.contains("apagar")) {
@@ -53,6 +54,15 @@
      window.location.replace("apagarRegistro.html");
     }
   });
+
+  document.querySelector(".btn-close").addEventListener("click",function(){
+    document.getElementById("modal").style.display="none"
+    
+  })
+  
+  document.querySelector(".fechar").addEventListener("click",function(){
+    document.getElementById("modal").style.display="none"
+  })
   
   // Chama a função quando a página carregar
   window.addEventListener('DOMContentLoaded', carregarVeiculos);
