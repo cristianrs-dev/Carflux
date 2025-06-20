@@ -20,3 +20,5 @@ document.getElementById('formVeiculo').addEventListener('submit', async function
     alert('Erro ao cadastrar o veículo.');
   }
 });
+
+
