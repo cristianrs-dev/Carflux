@@ -14,10 +14,10 @@ document.getElementById('formVeiculo').addEventListener('submit', async function
   });
 
   if (resposta.ok) {
-    alert('Veículo cadastrado com sucesso!');
+    alert('Veículo atualizado com sucesso!');
     this.reset();
   } else {
-    alert('Erro ao cadastrar o veículo.');
+    alert('Erro ao atualizar o veículo.');
   }
 });
 
