@@ -1,21 +1,16 @@
 
   // Função para formatar preço como moeda brasileira
-  function formatarPreco(valor) {
-    return parseFloat(valor).toLocaleString('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    });
-  }
+import  {formatarPreco} from "../js/utils.js";
+import { listarVeiculos } from "./api/veiculo.service.js";
+import { closeBtnFechar } from "./components/modal.js";
+import { closeBtnModal } from "./components/modal.js";
+import { showModal } from "./components/modal.js";
 
   // Função que busca os veículos e popula a tabela
   async function carregarVeiculos() {
     try {
-      const resposta = await fetch('http://localhost:8082/veiculos');
-      if (!resposta.ok) {
-        throw new Error('Erro ao buscar veículos.');
-      }
-
-      const veiculos = await resposta.json();
+     
+      const veiculos = await listarVeiculos()
       const corpoTabela = document.querySelector('table tbody');
       corpoTabela.innerHTML = ''; // Limpa a tabela antes de adicionar os novos dados
 
@@ -39,31 +34,16 @@
       alert('Erro ao carregar os veículos.');
     }
   }
+  
+closeBtnModal()
+closeBtnFechar()
 
-  document.addEventListener("click", function(event) {
-    const modal = document.getElementById("modal")
-    if (event.target.classList.contains("editar")) {
-      const id = event.target.dataset.id;
-      modal.style.display="block"
-      
-    }
-  
-    if (event.target.classList.contains("apagar")) {
-      const id = event.target.dataset.id;
-     // alert("Apagar: " + id);
-     window.location.replace("apagarRegistro.html");
-    }
-  });
+document.addEventListener("click", function (event) {
+  if (event.target.classList.contains("editar")) {
+    showModal();
+  }
+});
 
-  document.querySelector(".btn-close").addEventListener("click",function(){
-    document.getElementById("modal").style.display="none"
-    
-  })
-  
-  document.querySelector(".fechar").addEventListener("click",function(){
-    document.getElementById("modal").style.display="none"
-  })
-  
   // Chama a função quando a página carregar
   window.addEventListener('DOMContentLoaded', carregarVeiculos);
 

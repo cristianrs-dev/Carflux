@@ -58,6 +58,7 @@ public class VeiculoResource {
 	
 	@DeleteMapping("/{id}")
 	public void deletarVeiculo(@PathVariable Integer id) {
+		
 		service.apagarRegistroDoVeiculo(id);
 	}
 	
