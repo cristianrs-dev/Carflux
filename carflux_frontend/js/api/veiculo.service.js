@@ -25,3 +25,10 @@ export async function atualizarVeiculo(id, dados) {
     body: JSON.stringify(dados)
   });
 }
+
+export async function buscarVeiculoPeloId(id) {
+  
+  const resposta = await fetch(`${BASE_URL}/${id}`);
+  return await resposta.json();
+  
+}

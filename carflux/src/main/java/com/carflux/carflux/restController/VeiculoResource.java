@@ -30,6 +30,12 @@ public class VeiculoResource {
 		
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<Veiculo> buscarPeloId(@PathVariable Integer id){
+		 Veiculo veiculo = service.buscarVeiculoPeloCodigo(id);
+		 return ResponseEntity.ok(veiculo);
+	}
+	
 	@PostMapping
 	public ResponseEntity<String> cadastrarVeiculo(@RequestBody Veiculo veiculo){
 		service.cadastrarVeiculo(veiculo);
@@ -62,22 +68,22 @@ public class VeiculoResource {
 		service.apagarRegistroDoVeiculo(id);
 	}
 	
-	@GetMapping("/{marca}")
+	@GetMapping("/marca/{marca}")
 	public ResponseEntity<List<Veiculo>> buscarVeiculoPelaMarca(@PathVariable String marca) {
 		return ResponseEntity.ok(service.listarVeiculoPelaMarca(marca));
 	}
 	
-	@GetMapping("/{ano}")
+	@GetMapping("/ano/{ano}")
 	public ResponseEntity<List<Veiculo>> buscarVeiculoPeloAno(@PathVariable Integer ano) {
 		return ResponseEntity.ok(service.listarVeiculoPeloAno(ano));
 	}
 	
-	@GetMapping("/{preco}")
+	@GetMapping("/preco/{preco}")
 	public ResponseEntity<List<Veiculo>> buscarVeiculoPeloPreco(@PathVariable Double preco) {
 		return ResponseEntity.ok(service.listarVeiculoPeloPreco(preco));
 	}
 	
-	@GetMapping("/{cor}")
+	@GetMapping("/cor/{cor}")
 	public ResponseEntity<List<Veiculo>> buscarVeiculoPelaCor(@PathVariable String cor) {
 		return ResponseEntity.ok(service.listarVeiculoPelaCor(cor));
 	}
