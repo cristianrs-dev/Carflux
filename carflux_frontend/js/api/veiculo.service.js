@@ -27,8 +27,9 @@ export async function atualizarVeiculo(id, dados) {
 }
 
 export async function buscarVeiculoPeloId(id) {
-  
-  const resposta = await fetch(`${BASE_URL}/${id}`);
-  return await resposta.json();
+  const resposta = await fetch(`${BASE_URL}/${id}`,{ method:"GET" });
+  const dadosVeiculo =await resposta.json();
+  console.log(dadosVeiculo)
+  return dadosVeiculo
   
 }

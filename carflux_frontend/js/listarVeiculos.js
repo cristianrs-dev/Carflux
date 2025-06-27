@@ -39,10 +39,12 @@ import { buscarVeiculoPeloId } from "./api/veiculo.service.js";
 closeBtnModal()
 closeBtnFechar()
 
-document.addEventListener("click", function (event) {
+document.addEventListener("click", async function (event) {
   if (event.target.classList.contains("editar")) {
     const id = event.target.dataset.id
-   const veiculo = buscarVeiculoPeloId(id)
+   const veiculo = await buscarVeiculoPeloId(id)
+   console.log(veiculo.codigoVeiculo)
+   document.querySelector("#codigoVeiculo").value = veiculo.codigoVeiculo
    document.querySelector("#marca").value = veiculo.marca
    document.querySelector("#modelo").value = veiculo.modelo
    document.querySelector("#ano").value = veiculo.ano
@@ -54,6 +56,14 @@ document.addEventListener("click", function (event) {
     showModal();
   }
 });
+
+document.addEventListener("click", async function(event) {
+  if(event.target.classList.contains("salvar")){
+   const form = document.querySelector("#formVeiculo")
+   const formData = new FormData(form)
+   const dadosVeiculo = Object.fromEntries(formData.entries())
+  }
+})
 
   // Chama a função quando a página carregar
   window.addEventListener('DOMContentLoaded', carregarVeiculos);
