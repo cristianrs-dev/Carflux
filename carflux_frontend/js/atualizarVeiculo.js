@@ -1,12 +1,13 @@
 
-document.getElementById('formVeiculo').addEventListener('submit', async function(e) {
+document.addEventListener("DOMContentLoaded",function(){
+  document.getElementById('formVeiculo').addEventListener('submit', async function(e) {
   e.preventDefault();
 
   const formData = new FormData(this);
   const dadosVeiculo = Object.fromEntries(formData.entries());
 
   const resposta = await fetch('http://localhost:8082/veiculos', {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -19,6 +20,8 @@ document.getElementById('formVeiculo').addEventListener('submit', async function
   } else {
     alert('Erro ao atualizar o veículo.');
   }
-});
+})
+})
+
 
 
