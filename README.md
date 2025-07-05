@@ -93,7 +93,7 @@ src/
 
 **Cristian Ramos**
 Desenvolvedor Full Stack Java
-[LinkedIn](https://www.linkedin.com/in/seu-perfil)
+[LinkedIn](https://www.linkedin.com/in/cristianrds/)
 
 ---
 
