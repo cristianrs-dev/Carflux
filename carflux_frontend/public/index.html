@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../src/assets/css/style.css">
   <title>Sistema de Veículos</title>
- 
+  
 </head>
 <body>
   <div class="sidebar">
     <h2>Menu</h2>
-    <a href="index.html">Cadastrar Veículo</a>
-    <a href="listarVeiculos.html">Veículos</a>
-    <a href="registrarVenda.html">registrar Venda</a>
+    <a href="../public/index.html">Cadastrar Veículo</a>
+    <a href="../public/listarVeiculos.html">Veículos</a>
+    <a href="../public/registrarVenda.html">Registrar Venda</a>
     <a href="#">Logout</a>
   </div>
 
   <div class="main-content">
-    <h1>Atualizar Registro do Veículo</h1>
+    <h1>Cadastro de Veículo</h1>
 
     <form id="formVeiculo">
       <label for="marca">Marca:</label>
@@ -54,10 +54,12 @@
       <label for="preco">Preço (R$):</label>
       <input type="number" step="0.01" id="preco" name="preco" required>
 
-      <button type="submit">Atualizar Registro</button>
+      <button type="submit">Cadastrar Veículo</button>
     </form>
   </div>
 
- <script type="module" src="js/atualizarVeiculo.js"></script>
+  <script type="module" src="../src/pages/cadastrarVeiculo.js" ></script>
+
+ 
 </body>
 </html>
