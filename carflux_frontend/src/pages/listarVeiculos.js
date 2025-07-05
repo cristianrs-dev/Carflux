@@ -1,6 +1,6 @@
-import  {formatarPreco} from "../js/utils.js"; // Função para formatar preço como moeda brasileira
-import { listarVeiculos, buscarVeiculoPeloId,atualizarVeiculo,deletarVeiculo } from "./api/veiculo.service.js";
-import { closeBtnFechar,closeBtnModal,showModal } from "./components/modal.js";
+import  {formatarPreco} from "../utils/utils.js"; 
+import { listarVeiculos, buscarVeiculoPeloId,atualizarVeiculo,deletarVeiculo } from "../api/veiculo.service.js";
+import { closeBtnFechar,closeBtnModal,showModal } from "../components/modal.js";
 
 
   // Função que busca os veículos e popula a tabela
@@ -108,7 +108,7 @@ document.addEventListener("click", async function(event) {
   
 })
 
-              //DELETAR REGISTRO
+                             //DELETAR REGISTRO DO VEÍCULO
 document.addEventListener("click", async function(event){
   if(event.target.classList.contains("apagar")){
     try {
