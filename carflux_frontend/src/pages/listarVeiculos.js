@@ -1,10 +1,10 @@
 import  {formatarPreco} from "../utils/utils.js"; 
 import { listarVeiculos, buscarVeiculoPeloId,atualizarVeiculo,deletarVeiculo } from "../api/veiculo.service.js";
-import { closeBtnFechar,closeBtnModal,showModal } from "../components/modal.js";
+import { closeBtnModal, closeBtnFechar,closeModalCadastrarVeiculo,closeBtnModalCadastrarVeiculo,showModal, showModalCadastrarVeiculo } from "../components/modal.js";
 
 
   // Função que busca os veículos e popula a tabela
-  async function preencherTabelaComVeiculos() {
+ export async function preencherTabelaComVeiculos() {
     try {
      
       const veiculos = await listarVeiculos()
@@ -33,6 +33,13 @@ import { closeBtnFechar,closeBtnModal,showModal } from "../components/modal.js";
   }
 
 
+
+  //função pra cadastrar Novo veiculo
+document.getElementById("btnCadastrar").addEventListener("click",function(){
+  showModalCadastrarVeiculo()
+})
+
+
 //função para settar os campos do form editar veículo
 document.addEventListener("click", async function (event) {
   if (event.target.classList.contains("editar")) {
@@ -55,6 +62,7 @@ document.addEventListener("click", async function (event) {
       document.querySelector("#cambio").value = veiculo.cambio
       document.querySelector("#preco").value = veiculo.preco
 
+     
    //função para exibir o modal
     showModal();
 
@@ -149,6 +157,8 @@ document.addEventListener("click", async function(event){
 
 closeBtnModal()
 closeBtnFechar()
+closeModalCadastrarVeiculo()
+closeBtnModalCadastrarVeiculo()
   // Chama a função quando a página carregar
   window.addEventListener('DOMContentLoaded', preencherTabelaComVeiculos);
 

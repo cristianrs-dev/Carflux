@@ -1,5 +1,7 @@
 
-document.getElementById('formVeiculo').addEventListener('submit', async function(e) {
+document.addEventListener("DOMContentLoaded",function(){
+
+  document.getElementById('formCadastrarVeiculo').addEventListener('submit', async function(e) {
   e.preventDefault();
 
   const formData = new FormData(this);
@@ -16,7 +18,11 @@ document.getElementById('formVeiculo').addEventListener('submit', async function
   if (resposta.ok) {
     alert('Veículo cadastrado com sucesso!');
     this.reset();
+    preencherTabelaComVeiculos()
   } else {
     alert('Erro ao cadastrar o veículo.');
   }
 });
+
+})
+
